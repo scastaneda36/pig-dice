@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/scripts.js"></script>
+  </script>
+  <title>Pig Dice</title>
+  </head>
+  <body>
+      <div class="container">
+        <h1>Pig Dice</h1>
+        <div class="row">
+          <div class="col-md-4">
+            <hr>
+            <h2>Add player names:</h2>
+            <form id="player1">
+              <div class="form-group">
+                <label for="new-player1">Player 1</label>
+                <input type="text"  class="form-control" id="new-player1">
+              </div>
+              <button id="player1add" type="submit" class="btn-primary">Add</button>
+            </form>
+            <br>
+            <form id="player2">
+              <div class="form-group">
+                <label for="new-player2">Player 2</label>
+                <input type="text"  class="form-control" id="new-player2">
+              </div>
+              <button id="player2add" type="submit" class="btn-primary">Add</button>
+            </form>
+
+
+            <hr>
+            <button id="roll" type="button" class="btn-primary">Roll</button>
+            <button id="hold" type="button" class="btn-primary">Hold</button>
+            <button id="reset" type="button" class="btn-primary">Reset Game</button>
+          </div>
+          <div class="col-md-8">
+            <div id="show-scores">
+              <p>Player one: <span class="player1-name"></span></p>
+              <p>Player one score: <span class="player1-score"></span></p>
+              <p>Player two: <span class="player2-name"></span></p>
+              <p>Player two score: <span class="player2-score"></span></p>
+              <p>You rolled: <span class="turn-roll"></span></p>
+              <p>Turn total: <span class="turn-total"></span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+  </html>
