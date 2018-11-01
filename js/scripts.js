@@ -26,7 +26,7 @@ Consortium.prototype.findPlayer = function(id) {
 }
 
 // Business Logic for Players ---------
-var count = 1;
+var count = 0;
 var total = 0;
 
 function Player(name, score) {
@@ -97,6 +97,7 @@ $(document).ready(function() {
     var newPlayer2 = new Player(inputtedPlayer2,0);
     $(".player2-name").text(inputtedPlayer2);
     consortium.addPlayer(newPlayer2);
+    window.newPlayer2=newPlayer2;
     });
 
   $("#roll").on("click", function() {
@@ -108,7 +109,12 @@ $(document).ready(function() {
 
   $("#hold").on("click", function() {
     $(".turn-total").html(0);
-    $(".player1-score").html(newPlayer1.hold());
+    if (count%2===0){
+      $(".player1-score").html(newPlayer1.hold());
+    }
+    else{
+      $(".player2-score").html(newPlayer2.hold());
+    }
   });
 
   // $("#reset").on("click", function() {
