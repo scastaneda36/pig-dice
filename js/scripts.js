@@ -42,10 +42,6 @@ Player.prototype.hold = function () {
   return this.score;
 }
 
-Player.prototype.switch = function (){
-
-}
-
 Player.prototype.startOver = function () {
   this.name = "";
   this.score = 0;
@@ -100,20 +96,35 @@ $(document).ready(function() {
     window.newPlayer2=newPlayer2;
     });
 
+    var highlightPlayer1 = document.querySelector("#p1");
+    var highlightPlayer2 = document.querySelector("#p2");
+
   $("#roll").on("click", function() {
     $(".turn-roll").text(rollDice());
     $(".turn-total").html(turnTotal());
+    if (count%2===0){
+      highlightPlayer1.classList.add("attention");
+      highlightPlayer2.classList.remove("attention");
+    }
+    else{
+      highlightPlayer2.classList.add("attention");
+      highlightPlayer1.classList.remove("attention");
+    }
 
     // $(".player2-score").show();
   });
-
+  
   $("#hold").on("click", function() {
     $(".turn-total").html(0);
     if (count%2===0){
       $(".player1-score").html(newPlayer1.hold());
+      highlightPlayer2.classList.add("attention");
+      highlightPlayer1.classList.remove("attention");
     }
     else{
       $(".player2-score").html(newPlayer2.hold());
+      highlightPlayer1.classList.add("attention");
+      highlightPlayer2.classList.remove("attention");
     }
   });
 
