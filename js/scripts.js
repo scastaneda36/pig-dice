@@ -25,6 +25,10 @@ Consortium.prototype.findPlayer = function(id) {
   return false;
 }
 
+// Business Logic for Players ---------
+var count = 1;
+var total = 0;
+
 function Player(name, score) {
   this.name = name,
   this.score= 0
@@ -33,7 +37,9 @@ function Player(name, score) {
 Player.prototype.hold = function () {
   this.score += total;
   total=0;
-  return total;
+  count+=1;
+  window.count=count;
+  return this.score;
 }
 
 Player.prototype.switch = function (){
@@ -53,12 +59,12 @@ var rollDice = function() {
   return rolling;
   }
 
-  var total=0;
-
 function turnTotal () {
   if (rolling === 1) {
       total = 0;
       window.total=total;
+      count+=1;
+      window.count=count;
       return total;
   }
   else {
@@ -70,16 +76,8 @@ function turnTotal () {
 }
 
 
-// User Interface Logic ---------
-// var addressBook = new Consortium();
 
-// function showContact(contactId) {
-//   var contact = addressBook.findContact(contactId);
-//   $("#show-contact").show();
-//   $(".player1-name").html(player.name);
-//   $(".player1-score").html(player.score);
-//   $(".player2-score").html(player.score);
-//
+// User Interface Logic ---------
 
 var consortium = new Consortium();
 
@@ -109,9 +107,9 @@ $(document).ready(function() {
   });
 
   $("#hold").on("click", function() {
-    $(".turn-total").html(newPlayer1.hold());
+    $(".turn-total").html(0);
+    $(".player1-score").html(newPlayer1.hold());
   });
-
 
   // $("#reset").on("click", function() {
   //   player.startOver();
@@ -119,13 +117,4 @@ $(document).ready(function() {
   // //event.preventDefault();
   // })
 
-
-  // $("#buttons").on("click", ".deleteButton", function() {
-  //   addressBook.deleteContact(this.id);
-  //   $("#show-contact").hide();
-  //   displayContactDetails(addressBook);
-  //   });
   });
-
-    // var newAddress = new Address(inputtedHomeAddress, inputtedWorkAddress);
-    // var newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedEmail, newAddress);
