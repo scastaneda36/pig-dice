@@ -115,6 +115,7 @@ $(document).ready(function() {
   });
   
   $("#hold").on("click", function() {
+    $(".turn-roll").text("-");
     $(".turn-total").html(0);
     if (count%2===0){
       $(".player1-score").html(newPlayer1.hold());
