@@ -57,8 +57,16 @@ var rollDice = function() {
   var total=0;
 
 function turnTotal () {
-  return total+=rolling;
+  if (rolling === 1) {
+      total = 0;
+      return total;
   }
+  else {
+      total+=rolling;
+      return total;
+ }
+}
+
 
 // User Interface Logic ---------
 // var addressBook = new Consortium();
