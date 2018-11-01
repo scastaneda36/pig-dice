@@ -43,8 +43,9 @@ Player.prototype.hold = function () {
 }
 
 Player.prototype.startOver = function () {
-  this.name = "";
+  this.name= "";
   this.score = 0;
+  console.log ("work")
 }
 
 var rollDice = function() {
@@ -79,7 +80,9 @@ $(document).ready(function() {
   $("form#player1").submit(function(event) {
     event.preventDefault();
     var inputtedPlayer1 = $("input#new-player1").val();
+    console.log (inputtedPlayer1);
     var newPlayer1 = new Player(inputtedPlayer1,0);
+    $(".player1-name").show();
     $(".player1-name").text(inputtedPlayer1);
     consortium.addPlayer(newPlayer1);
     window.newPlayer1=newPlayer1;
@@ -89,6 +92,7 @@ $(document).ready(function() {
     event.preventDefault();
     var inputtedPlayer2 = $("input#new-player2").val();
     var newPlayer2 = new Player(inputtedPlayer2,0);
+    $(".player2-name").show();
     $(".player2-name").text(inputtedPlayer2);
     consortium.addPlayer(newPlayer2);
     window.newPlayer2=newPlayer2;
@@ -133,15 +137,20 @@ $(document).ready(function() {
       highlightPlayer2.classList.remove("attention");
     }
     
-    
-
 
   });
 
-  // $("#reset").on("click", function() {
-  //   player.startOver();
-  // });
-  // //event.preventDefault();
+  $("#reset").on("click", function() {
+    newPlayer1.startOver();
+    newPlayer2.startOver();
+    $(".player1-name").hide();
+    $(".player2-name").hide();
+    $(".player1-score").hide();
+    $(".player2-score").hide();
+    
+  });
+
+  //event.preventDefault();
   // })
 
   });
