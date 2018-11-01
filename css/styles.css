@@ -1,4 +1,22 @@
 
+#congrats{
+  display: none;
+}
+
 .attention {
   background-color: yellow;
+}
+h1 {
+  font-weight: bolder;
+  color: purple;
+}
+
+h2 {
+  font-style: italic;
+ 
+}
+
+p {
+  color: hotpink;
+  font-weight: bold
 }
