@@ -30,11 +30,10 @@ function Player(name, score) {
   this.score= 0
 }
 
-Player.prototype.hold = function (localScore) {
-  this.score += localScore;
-  localScore=0;
-  return localScore;
-  switchPlayers
+Player.prototype.hold = function () {
+  this.score += total;
+  total=0;
+  return total;
 }
 
 Player.prototype.switch = function (){
@@ -59,11 +58,14 @@ var rollDice = function() {
 function turnTotal () {
   if (rolling === 1) {
       total = 0;
+      window.total=total;
       return total;
   }
   else {
       total+=rolling;
+      window.total=total;
       return total;
+      //switch player
  }
 }
 
@@ -88,6 +90,7 @@ $(document).ready(function() {
     var newPlayer1 = new Player(inputtedPlayer1,0);
     $(".player1-name").text(inputtedPlayer1);
     consortium.addPlayer(newPlayer1);
+    window.newPlayer1=newPlayer1;
   });
 
   $("form#player2").submit(function(event) {
@@ -104,10 +107,12 @@ $(document).ready(function() {
 
     // $(".player2-score").show();
   });
-  // $("#hold").on("click", function() {
-  //   player.hold();
-  //   player.switch();
-  // });
+
+  $("#hold").on("click", function() {
+    $(".turn-total").html(newPlayer1.hold());
+  });
+
+
   // $("#reset").on("click", function() {
   //   player.startOver();
   // });
